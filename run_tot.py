@@ -8,6 +8,7 @@ from tot.tot import TreeOfThought
 # '[[1, *, *, 2], [*, 1, *, 4], [*, 2, *, *], [*, *, 4, *]]'
 #
 if __name__ == "__main__":
+
     if not len(sys.argv) == 2:
         print("""Usage:""")
         print("""    python run_tot.py "<problem_description>" """)
@@ -17,6 +18,7 @@ if __name__ == "__main__":
         exit(1)
     
     user_input = sys.argv[1]
+    
     path_to_config_yaml = "./config.yaml"
     config = Config(path_to_config_yaml)
     tot = TreeOfThought(config)

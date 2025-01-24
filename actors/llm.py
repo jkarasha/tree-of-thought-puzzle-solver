@@ -53,7 +53,23 @@ class OpenAIChatbot(ChatbotBase):
             print("LLM Reply:", reply)
             print("")
             return reply
-        except:
-            reply = "Failed to get LLM reply"
+        except openai.error.RateLimitError as e:
+            reply = f"OpenAI API rate limit exceeded: {str(e)}"
+            print(reply)
+            return reply
+        except openai.error.AuthenticationError as e:
+            reply = f"OpenAI API authentication failed: {str(e)}" 
+            print(reply)
+            return reply
+        except openai.error.APIError as e:
+            reply = f"OpenAI API error occurred: {str(e)}"
+            print(reply)
+            return reply
+        except openai.error.Timeout as e:
+            reply = f"OpenAI API request timed out: {str(e)}"
+            print(reply)
+            return reply
+        except Exception as e:
+            reply = f"Failed to get LLM reply: {str(e)}"
             print(reply)
             return reply
